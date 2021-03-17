@@ -1,0 +1,271 @@
+//------------------------------------------//
+//Variables:
+$red-color:#800000;
+$yellow-color:#b89600;
+$white-color:rgb(255, 255, 255);
+$orange-color:rgb(212, 138, 18);
+$black-color:rgb(14, 13, 13);
+
+//------------------------------------------//
+//General:
+* {
+    box-sizing: border-box;
+}
+
+//------------------------------------------//
+//HTML y Body:
+html,
+body {
+    font: {
+        family: Arial, Helvetica, sans-serif;
+    }
+
+    background-color: $red-color;
+    margin: 0px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+//------------------------------------------//
+//Header:
+header {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    background-color: $red-color;
+    color: $yellow-color;
+    font-size: 20px;
+}
+
+//Por defecto rotará 180º:
+header>h1 {
+    transform: rotateY(-180deg);
+}
+
+//Cuando paso el ratón, girará:
+header>h1:hover {
+    transform: rotateY(180deg);
+    animation-name: girar;
+    animation-duration: 2.5s;
+}
+
+//Animación "girar":
+@keyframes girar {
+    from {
+        transform: rotateY(-180deg);
+    }
+
+    to {
+        transform: rotateY(0deg);
+    }
+}
+
+//------------------------------------------//
+//Imagen:
+.image {
+    background-color: $white-color;
+    width: 300px;
+    height: 300px;
+}
+
+//------------------------------------------//
+//Contenedor principal: 
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+//------------------------------------------//
+//Primera Imágen: 
+.galeria>div:nth-child(1) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color;
+    width: 300px;
+    height: 300px;
+    margin: 15px;
+    transition: all 1s;
+    transition-timing-function: linear;
+
+    //Imagen:
+    .image {
+        transition: all 2s;
+        background-image: url("../images/1.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 200px;
+        width: 200px;
+        //Efecto "suave":
+        transform: scale(1);
+    }
+}
+
+//Transición cuando ponemos el ratón por encima:
+//Bordes redondeados:
+.galeria>div:nth-child(1)>.image:hover {
+    border-radius: 20px;
+    transform: scale(1.10);
+}
+
+//------------------------------------------//
+//Segunda Imágen: 
+.galeria>div:nth-child(2) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color;
+    width: 300px;
+    height: 300px;
+    margin: 15px;
+
+    //Imagen:
+    .image {
+        transition: all 0.5s;
+        background-image: url("../images/2.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 200px;
+        width: 200px;
+        //Efecto "suave":
+        transform: scale(1);
+    }
+}
+
+//Transición cuando ponemos el ratón por encima:
+//Fondo de color negro con box shadow:
+.galeria>div:nth-child(2)>.image:hover {
+    box-shadow: -6px -6px 10px 5px $black-color;
+    transform: translate(5px, 5px);
+    transition-property: left;
+    transition-property: bottom;
+    transition: all 0.5s ease-in-out;
+}
+
+//------------------------------------------//
+//Tercera Imágen: 
+.galeria>div:nth-child(3) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color;
+    width: 300px;
+    height: 300px;
+    margin: 15px;
+
+    //Imagen:
+    .image {
+        transition-duration: 1s;
+        background-image: url("../images/3.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 200px;
+        width: 200px;
+        //Efecto "suave":
+        transition-timing-function: cubic-bezier(0, -1.6, 1, 2.71);
+        transform: rotateZ(0deg);
+    }
+}
+
+//Transición cuando ponemos el ratón por encima:
+//Girar hacia un lado, poner fondo de color negro:
+.galeria>div:nth-child(3)>.image:hover {
+    box-shadow: 10px 10px 10px $black-color;
+    transform: rotateZ(-50deg);
+    //Salga de la pantalla:
+    width: 260px;
+    height: 260px;
+}
+
+//------------------------------------------//
+//Cuarta Imágen: 
+.galeria>div:nth-child(4) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $white-color;
+    width: 300px;
+    height: 300px;
+    margin: 15px;
+
+    //Imagen:
+    .image {
+        transition: border-radius 2s;
+        background-image: url("../images/4.jpg");
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 200px;
+        width: 200px;
+        //Efecto "suave" y bordes redondeados:
+        transform: scale(1);
+    }
+}
+
+//Transición cuando ponemos el ratón por encima:
+//Girar completamente la imagen sin parar con bordes redondeados:
+.galeria>div:nth-child(4)>.image:hover {
+    animation-name: girarContinuamente;
+    animation-duration: 0.9s;
+    animation-timing-function: linear;
+    //Tiempo de interacción (girar todo el rato):
+    animation-iteration-count: infinite;
+    border-radius: 100px;
+}
+
+//Animación "girarContinuamente":
+@keyframes girarContinuamente {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+//------------------------------------------//
+//Botón:
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $yellow-color;
+    border-radius: 10px;
+    width: 100px;
+    height: 40px;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+//Transición cuando ponemos el ratón por encima:
+//Hacer "temblar" al botón, sin parar.
+.btn:hover {
+    animation-name: botonTemblar;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-out;
+    //Tiempo de interacción (temblar todo el rato):
+    animation-iteration-count: infinite;
+}
+
+//Animación "botonTemblar":
+@keyframes botonTemblar {
+    25% {
+        transform: rotateZ(10deg);
+    }
+
+    50% {
+        transform: rotateZ(-10deg);
+    }
+}
+
+//------------------------------------------//
